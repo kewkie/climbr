@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
+using Web.Common;
 using WebMatrix.WebData;
-using Web.Models;
 using Domain;
 
 namespace Web.Controllers
 {
     [Authorize]
-    public class UserController : Controller
+    public class UserController : ClimbrController
     {
-        private ClimbrContext db = new ClimbrContext();
+        public UserController(ClimbrContext context) : base(context)
+        {
+        }
 
         public ActionResult Index()
         {

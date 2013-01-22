@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Domain;
+using Web.Common;
 
 namespace Web.Controllers
 {
     [AllowAnonymous]
-    public class HomeController : Controller
+    public class HomeController : ClimbrController
     {
+        public HomeController(ClimbrContext context) : base(context)
+        {
+        }
+
         public ActionResult Index()
         {
             return View();

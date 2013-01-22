@@ -1,21 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using Web.Common;
 using Web.Models;
 using Domain;
 
 namespace Web.Controllers
 {
-    public class ClimbController : Controller
+    public class ClimbController : ClimbrController
     {
-        private ClimbrContext db = new ClimbrContext();
-
         //
         // GET: /Climb/
+        public ClimbController(ClimbrContext context) : base(context)
+        {
+        }
+
         public ActionResult Index()
         {
             return View(db.Climbs.ToList());

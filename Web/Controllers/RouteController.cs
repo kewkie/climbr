@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
-using Web.Models;
+using Web.Common;
 using Domain;
 
 namespace Web.Controllers
 {
-    public class RouteController : Controller
+    public class RouteController : ClimbrController
     {
-        private ClimbrContext db = new ClimbrContext();
-
         //
         // GET: /Route/
+        public RouteController(ClimbrContext context) : base(context)
+        {
+        }
+
         public ActionResult Index()
         {
             return View(db.Routes.ToList());

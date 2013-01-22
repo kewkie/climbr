@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
-using Web.Models;
 using Domain;
+using Web.Common;
 
 namespace Web.Controllers
 {
-    public class LocationController : Controller
+    public class LocationController : ClimbrController
     {
-        private ClimbrContext db = new ClimbrContext();
-
         //
         // GET: /Location/
+        public LocationController(ClimbrContext context) : base(context)
+        {
+        }
 
         public ActionResult Index()
         {
@@ -24,7 +20,6 @@ namespace Web.Controllers
 
         //
         // GET: /Location/Details/5
-
         public ActionResult Details(int id = 0)
         {
             Location location = db.Locations.Find(id);
@@ -37,7 +32,6 @@ namespace Web.Controllers
 
         //
         // GET: /Location/Create
-
         public ActionResult Create()
         {
             return View();
@@ -45,7 +39,6 @@ namespace Web.Controllers
 
         //
         // POST: /Location/Create
-
         [HttpPost]
         public ActionResult Create(Location createlocation)
         {
